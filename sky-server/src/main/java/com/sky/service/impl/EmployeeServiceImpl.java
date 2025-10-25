@@ -79,8 +79,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setUpdateTime(LocalDateTime.now());
         // set createrUser and updateUser
         // use thread local to get current user id
-        employee.setCreateUser(BaseContext.getCurrentId()); // Example user ID
-        employee.setUpdateUser(BaseContext.getCurrentId()); // Example user ID
+        employee.setCreateUser(BaseContext.getCurrentId());
+        employee.setUpdateUser(BaseContext.getCurrentId());
         // Save to database
 
         employeeMapper.insert(employee);
@@ -94,5 +94,24 @@ public class EmployeeServiceImpl implements EmployeeService {
         long total = page.getTotal();
         java.util.List<Employee> records = page.getResult();
         return new PageResult(total, records);
+    }
+
+    @Override
+    public void changeStatus(Integer status, Long id) {
+        employeeMapper.changeStatus(status, id);
+    }
+
+    @Override
+    public void update(EmployeeDTO employeeDTO) {
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeDTO, employee);
+        employee.setUpdateTime(LocalDateTime.now());
+        employee.setUpdateUser(BaseContext.getCurrentId());
+        employeeMapper.update(employee);
+    }
+
+    @Override
+    public Employee getById(Long id) {
+        return employeeMapper.getById(id);
     }
 }
