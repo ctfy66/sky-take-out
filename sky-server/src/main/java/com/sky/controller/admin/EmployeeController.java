@@ -111,7 +111,10 @@ public class EmployeeController {
     @PostMapping("/status/{status}")
     public Result<String> changeStatus(@PathVariable Integer status, @RequestParam Long id) {
         log.info("启用禁用员工：{}, {}", status, id);
-        employeeService.changeStatus(status, id);
+       EmployeeDTO employee = new EmployeeDTO();
+       employee.setId(id);
+
+        employeeService.update(employee);
         return Result.success();
     }
 
