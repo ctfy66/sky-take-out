@@ -89,4 +89,16 @@ public class DishController {
         return Result.success();
     }
 
+    /**
+     * 修改菜品状态
+     * @return
+     */
+    @ApiOperation("修改菜品状态")
+    @PostMapping("/status/{status}")
+    public Result changestatus(@PathVariable Integer status, @RequestParam Long id) {
+        log.info("修改菜品状态{}", status, id);
+        dishService.chageStatus(status, id);
+        return Result.success();
+    }
+
 }

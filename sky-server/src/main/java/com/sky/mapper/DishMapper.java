@@ -43,9 +43,6 @@ public interface DishMapper {
     void deleteBatch(List<Long> ids);
 
     @AutoFill(OperationType.UPDATE)
-    @Update("update dish set name = #{name}, category_id = #{categoryId}, price = #{price}, image = #{image}, " +
-            "description = #{description}, status = #{status}, update_time = #{updateTime}, update_user = #{updateUser} " +
-            "where id = #{id}")
     void update(Dish dish);
 
 }

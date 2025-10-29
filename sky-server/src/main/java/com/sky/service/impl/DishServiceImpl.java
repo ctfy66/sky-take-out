@@ -106,4 +106,13 @@ public class DishServiceImpl implements DishService {
             dishFlavorMapper.insert(dishFlavor);
         }
     }
+
+    @Override
+    public void chageStatus(Integer status, Long id) {
+        Dish dish = Dish.builder()
+                .status(status).id(id).build();
+        dishMapper.update(dish);
+    }
+
+
 }
