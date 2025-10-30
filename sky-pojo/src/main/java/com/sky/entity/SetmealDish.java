@@ -1,5 +1,7 @@
 package com.sky.entity;
 
+import com.sky.dto.SetmealPageQueryDTO;
+import com.sky.vo.DishVO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,4 +37,7 @@ public class SetmealDish implements Serializable {
 
     //份数
     private Integer copies;
+
+
+
 }
